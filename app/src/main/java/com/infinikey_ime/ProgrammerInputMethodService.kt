@@ -60,6 +60,14 @@ class ProgrammerInputMethodService : InputMethodService() {
     }
 
     private val prefChangeListener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+        if (key?.startsWith("pref_layout_is_edited_kb") == true) {
+            val layoutId = key.removePrefix("pref_layout_is_edited_")
+            LayoutParser.clearLayoutCache(layoutId)
+        } else if (key?.startsWith("pref_custom_layout_json_kb") == true) {
+            val layoutId = key.removePrefix("pref_custom_layout_json_")
+            LayoutParser.clearLayoutCache(layoutId)
+        }
+
         if (key == "pref_custom_theme_json" ||
             key == "pref_theme_preset_idx" ||
             key == "pref_active_theme_key" ||
@@ -73,6 +81,8 @@ class ProgrammerInputMethodService : InputMethodService() {
             key == "pref_form_factor" ||
             key == "pref_form_factor_mode" ||
             key == "pref_keyboard_layout_target" ||
+            key?.startsWith("pref_layout_is_edited_kb") == true ||
+            key?.startsWith("pref_custom_layout_json_kb") == true ||
             key == "pref_accessory_layout_target" ||
             key == "pref_deadspace_layout_target" ||
             key?.startsWith("pref_row_vis_") == true) {
@@ -619,6 +629,10 @@ class ProgrammerInputMethodService : InputMethodService() {
                         val trimmedList = recentList.take(24)
                         prefs.edit().putString("pref_recent_emojis", trimmedList.joinToString(",")).apply()
                     }
+                }
+
+                action.switchTo?.takeIf { it.isNotBlank() }?.let { target ->
+                    handleKeyAction(KeyAction.SwitchLayout(target))
                 }
 
                 if (keyboardState.consumeOneShotModifiers()) {

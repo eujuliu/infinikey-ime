@@ -201,6 +201,46 @@ object IconRenderer {
                 drawKeyboard(canvas, rect, paint, iconSize)
                 true
             }
+            "space", "spacebar", "␣" -> {
+                drawSpaceBar(canvas, rect, paint, iconSize)
+                true
+            }
+            "backspace", "delete", "⌫" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "⌫", 1.15f)
+                true
+            }
+            "enter", "return", "↵" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "↵", 1.15f)
+                true
+            }
+            "tab", "⇥" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "⇥", 1.15f)
+                true
+            }
+            "shift", "⇧" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "⇧", 1.15f)
+                true
+            }
+            "ctrl", "control", "⌃" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "⌃", 1.15f)
+                true
+            }
+            "code", "programming", "</>" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "</>", 0.95f)
+                true
+            }
+            "numbers", "123" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "123", 0.95f)
+                true
+            }
+            "letters", "abc" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "ABC", 0.95f)
+                true
+            }
+            "symbols", "sym", "=\\<" -> {
+                drawGlyphIcon(canvas, rect, paint, iconSize, "=\\<", 0.95f)
+                true
+            }
             else -> false
         }
     }
@@ -486,5 +526,46 @@ object IconRenderer {
         val fm = p.fontMetrics
         val bl = rect.centerY() - (fm.ascent + fm.descent) / 2
         canvas.drawText("⌨", rect.centerX(), bl, p)
+    }
+
+    private fun drawSpaceBar(canvas: Canvas, rect: RectF, paint: Paint, iconSize: Float) {
+        val strokePaint = Paint(paint).apply {
+            style = Paint.Style.STROKE
+            strokeWidth = iconSize * 0.12f
+            strokeCap = Paint.Cap.ROUND
+            strokeJoin = Paint.Join.ROUND
+        }
+        val halfWidth = iconSize * 0.55f
+        val halfHeight = iconSize * 0.22f
+        val path = Path().apply {
+            moveTo(rect.centerX() - halfWidth, rect.centerY() + halfHeight)
+            lineTo(rect.centerX() - halfWidth, rect.centerY() - halfHeight)
+            lineTo(rect.centerX() + halfWidth, rect.centerY() - halfHeight)
+            lineTo(rect.centerX() + halfWidth, rect.centerY() + halfHeight)
+        }
+        canvas.drawPath(path, strokePaint)
+    }
+
+    private fun drawGlyphIcon(
+        canvas: Canvas,
+        rect: RectF,
+        paint: Paint,
+        iconSize: Float,
+        glyph: String,
+        scale: Float
+    ) {
+        val glyphPaint = Paint(paint).apply {
+            textAlign = Paint.Align.CENTER
+            textSize = iconSize * scale
+        }
+        FontFallbackManager.applyToPaint(glyphPaint, glyph)
+        val availableWidth = rect.width() * 0.82f
+        val measuredWidth = glyphPaint.measureText(glyph)
+        if (measuredWidth > availableWidth && measuredWidth > 0f) {
+            glyphPaint.textSize *= availableWidth / measuredWidth
+        }
+        val fm = glyphPaint.fontMetrics
+        val baseline = rect.centerY() - (fm.ascent + fm.descent) / 2f
+        canvas.drawText(glyph, rect.centerX(), baseline, glyphPaint)
     }
 }

@@ -24,6 +24,16 @@ object LayoutParser {
 
     private val gson = Gson()
 
+    private val layoutCache = java.util.concurrent.ConcurrentHashMap<String, LayoutDefinition>()
+
+    fun clearLayoutCache(layoutId: String? = null) {
+        if (layoutId.isNullOrBlank()) {
+            layoutCache.clear()
+        } else {
+            layoutCache.remove(layoutId.removePrefix("layouts/").removeSuffix(".json") )
+        }
+    }
+
     fun getLayoutVersionFromJson(jsonStr: String): String {
         return try {
             val root = com.google.gson.JsonParser.parseString(jsonStr).asJsonObject
@@ -114,8 +124,18 @@ object LayoutParser {
         if (cleanName.startsWith("emoji_auto") || cleanName.equals("emoji_picker", ignoreCase = true)) {
             return loadLayoutFromAsset(context, "emoji_recents.json", previousLayoutId)
         }
-        syncAndUpgradeDefaultLayouts(context)
         val cleanFileName = if (fileName.startsWith("layouts/")) fileName.removePrefix("layouts/") else fileName
+        val cleanCacheId = cleanFileName.removeSuffix(".json")
+
+        if (cleanCacheId == "kb1_macro" || cleanCacheId == "kb2_letters" || cleanCacheId == "kb2_numbers" || cleanCacheId == "kb2_symbols") {
+            val prefs = context.getSharedPreferences("programmer_keyboard_prefs", Context.MODE_PRIVATE)
+            val isEdited = prefs.getBoolean("pref_layout_is_edited_$cleanCacheId", false)
+            val customJson = prefs.getString("pref_custom_layout_json_$cleanCacheId", null)
+            if (!isEdited && customJson.isNullOrEmpty()) {
+                layoutCache[cleanCacheId]?.let { return it }
+            }
+        }
+
         val targetJsonName = if (cleanFileName.endsWith(".json")) cleanFileName else "$cleanFileName.json"
         val externalLayoutFile = java.io.File(java.io.File(context.getExternalFilesDir(null), "layouts"), targetJsonName)
 
@@ -132,7 +152,17 @@ object LayoutParser {
             e.printStackTrace()
             fallbackSimpleLayout(context)
         }
-        return ensureNavigationKey(layout)
+
+        val finalLayout = ensureNavigationKey(layout)
+        if (cleanCacheId == "kb1_macro" || cleanCacheId == "kb2_letters" || cleanCacheId == "kb2_numbers" || cleanCacheId == "kb2_symbols") {
+            val prefs = context.getSharedPreferences("programmer_keyboard_prefs", Context.MODE_PRIVATE)
+            val isEdited = prefs.getBoolean("pref_layout_is_edited_$cleanCacheId", false)
+            val customJson = prefs.getString("pref_custom_layout_json_$cleanCacheId", null)
+            if (!isEdited && customJson.isNullOrEmpty()) {
+                layoutCache[cleanCacheId] = finalLayout
+            }
+        }
+        return finalLayout
     }
 
     fun loadThemePresetFromAssets(context: Context, themeName: String): Pair<LayoutTheme?, Map<String, KeyStyle>> {
@@ -793,7 +823,10 @@ object LayoutParser {
     private fun parseAction(obj: JsonObject): KeyAction {
         val typeStr = obj.get("type")?.asString ?: return KeyAction.None
         return when (typeStr) {
-            "SEND_TEXT" -> KeyAction.SendText(obj.get("text")?.asString ?: "")
+            "SEND_TEXT" -> KeyAction.SendText(
+                text = obj.get("text")?.asString ?: "",
+                switchTo = obj.get("switchTo")?.asString
+            )
             "SEND_CODE" -> KeyAction.SendCode(obj.get("code")?.asInt ?: KeyEvent.KEYCODE_UNKNOWN)
             "SWITCH_LAYOUT" -> KeyAction.SwitchLayout(obj.get("target")?.asString ?: "main")
             "SET_SCREEN_MODE" -> KeyAction.SetScreenMode(obj.get("mode")?.asString ?: "FULL_WIDTH_DOCKED")

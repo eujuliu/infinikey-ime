@@ -47,6 +47,10 @@ Infinikey IME supports multiple built-in layouts tailored for different input ta
 | `media` | Multimedia Control Pad | Volume, playback, track seek, calculator, and brightness controls. |
 | `launcher` | 5x5 App Launcher Grid | 25 customizable app shortcut slots (`slot_0`–`slot_24`). |
 | `macro` | Macro Pad Layout | 2x5 grid featuring `M1` through `M10` macro keys. |
+| `kb2_letters` | KB2 Letters (Default) | Default letters keyboard with a number row, QWERTY, Tab/Esc/Shift/Ctrl/Space/Backspace/Enter, `123` and `=\\<` symbol keys, and a `CODE` key that opens `kb1_macro`. |
+| `kb1_macro` | KB1 Macro Layer | Secondary 10-column macro/code layer whose shortcut keys send direct tmux/vim sequences (for example `prefix` sends Ctrl+B and `prefix z` sends Ctrl+B then z). Vim insertion keys return to `kb2_letters`; hjkl and arrow keys repeat while held. `ABC` returns to the letters keyboard and `123` opens `kb2_numbers`. |
+| `kb2_numbers` | KB2 Numbers | Dedicated numeric/symbols copy that returns `ABC` directly to `kb2_letters`. |
+| `kb2_symbols` | KB2 Symbols | Dedicated secondary-symbol copy that returns `ABC` directly to `kb2_letters`. |
 
 ### Switching Layouts at Runtime
 - **Layout Switcher Key**: Tap the layout key (e.g. `Fn`, `123`, `🌐`, or `ABC`) to swap the active layout.

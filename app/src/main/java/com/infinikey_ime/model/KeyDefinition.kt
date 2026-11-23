@@ -60,7 +60,7 @@ enum class KeyActionType {
  * Strongly-typed action triggered by key events or full-surface gestures.
  */
 sealed class KeyAction {
-    data class SendText(val text: String) : KeyAction()
+    data class SendText(val text: String, val switchTo: String? = null) : KeyAction()
     data class SendCode(val code: Int) : KeyAction()
     data class SwitchLayout(val target: String) : KeyAction()
     data class SetScreenMode(val mode: String) : KeyAction()

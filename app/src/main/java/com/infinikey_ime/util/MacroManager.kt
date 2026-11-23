@@ -98,6 +98,7 @@ object MacroManager {
             is KeyAction.SendText -> {
                 obj.addProperty("type", "SEND_TEXT")
                 obj.addProperty("text", action.text)
+                action.switchTo?.let { obj.addProperty("switchTo", it) }
             }
             is KeyAction.SendCode -> {
                 obj.addProperty("type", "SEND_CODE")
@@ -128,7 +129,10 @@ object MacroManager {
     private fun parseJsonToAction(obj: JsonObject): KeyAction {
         val type = obj.get("type")?.asString ?: return KeyAction.None
         return when (type) {
-            "SEND_TEXT" -> KeyAction.SendText(obj.get("text")?.asString ?: "")
+            "SEND_TEXT" -> KeyAction.SendText(
+                text = obj.get("text")?.asString ?: "",
+                switchTo = obj.get("switchTo")?.asString
+            )
             "SEND_CODE" -> KeyAction.SendCode(obj.get("code")?.asInt ?: 0)
             "TOGGLE_MODIFIER" -> KeyAction.ToggleModifier(obj.get("modifier")?.asString ?: "SHIFT")
             "LOCK_MODIFIER" -> KeyAction.LockModifier(obj.get("modifier")?.asString ?: "SHIFT")

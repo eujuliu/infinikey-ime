@@ -3396,6 +3396,7 @@ class SettingsActivity : AppCompatActivity() {
             is KeyAction.SendText -> {
                 obj.addProperty("type", "SEND_TEXT")
                 obj.addProperty("text", action.text)
+                action.switchTo?.let { obj.addProperty("switchTo", it) }
             }
             is KeyAction.SendCode -> {
                 obj.addProperty("type", "SEND_CODE")

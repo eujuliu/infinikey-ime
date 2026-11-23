@@ -1,0 +1,481 @@
+{
+  "id": "kb2_letters",
+  "name": "KB2 Letters (Default)",
+  "version": "0.3.9",
+  "_comment": "REMINDER: Always update this version number to match the keyboard baseVersionName in app/build.gradle.kts whenever modifications are made to this layout.",
+  "author": "Infinikey IME",
+  "description": "Default letters layer. Row 4 contains Shift, Z X C V B N M, and Backspace. Row 5 contains Ctrl, 123, =\\<, CODE, Space, Esc, and Enter.",
+  "metadata": {
+    "horizontalSpacing": 4,
+    "verticalSpacing": 4,
+    "defaultScreenMode": "FULL_WIDTH_DOCKED",
+    "defaultHeightPercentage": 32,
+    "showKeyPreview": false,
+    "accessoryLayout": "none"
+  },
+  "theme": {
+    "fontFamily": "Monospace"
+  },
+  "styles": {
+    "alphaKey": {
+      "cornerRadius": 8,
+      "showPreview": false
+    },
+    "numberKey": {
+      "cornerRadius": 8,
+      "showPreview": false
+    },
+    "modifierKey": {
+      "cornerRadius": 8,
+      "showPreview": false
+    },
+    "functionKey": {
+      "cornerRadius": 6,
+      "showPreview": false
+    },
+    "actionKey": {
+      "cornerRadius": 8,
+      "showPreview": false
+    }
+  },
+  "rows": [
+    {
+      "id": 1,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "1",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "1"
+          }
+        },
+        {
+          "label": "2",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "2"
+          }
+        },
+        {
+          "label": "3",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "3"
+          }
+        },
+        {
+          "label": "4",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "4"
+          }
+        },
+        {
+          "label": "5",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "5"
+          }
+        },
+        {
+          "label": "6",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "6"
+          }
+        },
+        {
+          "label": "7",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "7"
+          }
+        },
+        {
+          "label": "8",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "8"
+          }
+        },
+        {
+          "label": "9",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "9"
+          }
+        },
+        {
+          "label": "0",
+          "style": "numberKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "q",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "q"
+          }
+        },
+        {
+          "label": "w",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "w"
+          }
+        },
+        {
+          "label": "e",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "e"
+          }
+        },
+        {
+          "label": "r",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "r"
+          }
+        },
+        {
+          "label": "t",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "t"
+          }
+        },
+        {
+          "label": "y",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "y"
+          }
+        },
+        {
+          "label": "u",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "u"
+          }
+        },
+        {
+          "label": "i",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "i"
+          }
+        },
+        {
+          "label": "o",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "o"
+          }
+        },
+        {
+          "label": "p",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "p"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "TAB",
+          "icon": "tab",
+          "style": "actionKey",
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 61
+          }
+        },
+        {
+          "label": "a",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "a"
+          }
+        },
+        {
+          "label": "s",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "s"
+          }
+        },
+        {
+          "label": "d",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "d"
+          }
+        },
+        {
+          "label": "f",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "f"
+          }
+        },
+        {
+          "label": "g",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "g"
+          }
+        },
+        {
+          "label": "h",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "h"
+          }
+        },
+        {
+          "label": "j",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "j"
+          }
+        },
+        {
+          "label": "k",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "k"
+          }
+        },
+        {
+          "label": "l",
+          "style": "alphaKey",
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "l"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "shift",
+          "icon": "shift",
+          "style": "modifierKey",
+          "weight": 1.5,
+          "onPress": {
+            "type": "TOGGLE_MODIFIER",
+            "modifier": "SHIFT"
+          },
+          "onLongPress": {
+            "type": "LOCK_MODIFIER",
+            "modifier": "SHIFT"
+          }
+        },
+        {
+          "label": "z",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "z"
+          }
+        },
+        {
+          "label": "x",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "x"
+          }
+        },
+        {
+          "label": "c",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "c"
+          }
+        },
+        {
+          "label": "v",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "v"
+          }
+        },
+        {
+          "label": "b",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "b"
+          }
+        },
+        {
+          "label": "n",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "n"
+          }
+        },
+        {
+          "label": "m",
+          "style": "alphaKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "m"
+          }
+        },
+        {
+          "label": "backspace",
+          "icon": "backspace",
+          "style": "actionKey",
+          "weight": 1.5,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 67
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 67,
+            "intervalMs": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "ctrl",
+          "icon": "ctrl",
+          "style": "modifierKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "TOGGLE_MODIFIER",
+            "modifier": "CTRL"
+          },
+          "onLongPress": {
+            "type": "LOCK_MODIFIER",
+            "modifier": "CTRL"
+          }
+        },
+        {
+          "label": "123",
+          "icon": "numbers",
+          "style": "modifierKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SWITCH_LAYOUT",
+            "target": "kb2_numbers"
+          }
+        },
+        {
+          "label": "=\\<",
+          "icon": "symbols",
+          "style": "modifierKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SWITCH_LAYOUT",
+            "target": "kb2_symbols"
+          }
+        },
+        {
+          "label": "CODE",
+          "icon": "code",
+          "style": "functionKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SWITCH_LAYOUT",
+            "target": "kb1_macro"
+          }
+        },
+        {
+          "label": "SPACE",
+          "icon": "space",
+          "style": "alphaKey",
+          "weight": 4.0,
+          "flexible": true,
+          "isSplitKey": true,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": " "
+          }
+        },
+        {
+          "label": "ESC",
+          "style": "actionKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 111
+          }
+        },
+        {
+          "label": "ENTER",
+          "icon": "enter",
+          "style": "actionKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 66
+          }
+        }
+      ]
+    }
+  ]
+}

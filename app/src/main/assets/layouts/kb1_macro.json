@@ -1,0 +1,593 @@
+{
+  "id": "kb1_macro",
+  "name": "KB1 Macro Layer",
+  "version": "0.3.9",
+  "_comment": "REMINDER: Always update this version number to match the keyboard baseVersionName in app/build.gradle.kts whenever modifications are made to this layout.",
+  "author": "Infinikey IME",
+  "description": "Code keyboard for vim/tmux shortcuts. Labels are concise (stab, gd, sf, sr, prefix z, etc.). Prefix shortcuts send Ctrl+B directly, shift shortcuts use the uppercase letter or s abbreviation, hjkl and arrows auto-repeat, and insertion keys return to kb2_letters. ABC returns to the letters layer and 123 opens kb2_numbers.",
+  "metadata": {
+    "horizontalSpacing": 4,
+    "verticalSpacing": 4,
+    "defaultScreenMode": "FULL_WIDTH_DOCKED",
+    "defaultHeightPercentage": 32,
+    "accessoryLayout": "none"
+  },
+  "theme": {
+    "fontFamily": "Monospace"
+  },
+  "styles": {
+    "alphaKey": {
+      "cornerRadius": 8
+    },
+    "numberKey": {
+      "cornerRadius": 8
+    },
+    "modifierKey": {
+      "cornerRadius": 8
+    },
+    "functionKey": {
+      "cornerRadius": 6
+    },
+    "actionKey": {
+      "cornerRadius": 8
+    },
+    "navigationKey": {
+      "cornerRadius": 8
+    }
+  },
+  "rows": [
+    {
+      "id": 1,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "1",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "1"
+          }
+        },
+        {
+          "label": "2",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "2"
+          }
+        },
+        {
+          "label": "3",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "3"
+          }
+        },
+        {
+          "label": "4",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "4"
+          }
+        },
+        {
+          "label": "5",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "5"
+          }
+        },
+        {
+          "label": "6",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "6"
+          }
+        },
+        {
+          "label": "7",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "7"
+          }
+        },
+        {
+          "label": "8",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "8"
+          }
+        },
+        {
+          "label": "9",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "9"
+          }
+        },
+        {
+          "label": "0",
+          "style": "numberKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "0"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "",
+          "spacer": true,
+          "weight": 0.5
+        },
+        {
+          "label": "tab",
+          "style": "actionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 61
+          },
+          "icon": "tab"
+        },
+        {
+          "label": "stab",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u001b[Z"
+          }
+        },
+        {
+          "label": "Esc",
+          "style": "actionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 111
+          }
+        },
+        {
+          "label": "gd",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "gd"
+          }
+        },
+        {
+          "label": "gr",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "gr"
+          }
+        },
+        {
+          "label": "o",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u000f"
+          }
+        },
+        {
+          "label": "te",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "te"
+          }
+        },
+        {
+          "label": "E",
+          "style": "functionKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "E"
+          }
+        },
+        {
+          "label": "e",
+          "style": "alphaKey",
+          "weight": 1.111,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "e",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "",
+          "spacer": true,
+          "weight": 0.5
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "p",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0002"
+          },
+          "fgColor": "#F87171"
+        },
+        {
+          "label": "pz",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0002z"
+          },
+          "fgColor": "#F87171"
+        },
+        {
+          "label": "ps",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0002s"
+          },
+          "fgColor": "#F87171"
+        },
+        {
+          "label": "pc",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0002c"
+          },
+          "fgColor": "#F87171"
+        },
+        {
+          "label": "A",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "A",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "o",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "o",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "a",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "a",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "B",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "B"
+          }
+        },
+        {
+          "label": "b",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "b"
+          }
+        },
+        {
+          "label": "enter",
+          "style": "actionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 66
+          },
+          "icon": "enter"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "quit",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0003"
+          }
+        },
+        {
+          "label": "force quit",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "\u0004"
+          }
+        },
+        {
+          "label": "sf",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "sf"
+          }
+        },
+        {
+          "label": "sr",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "sr"
+          }
+        },
+        {
+          "label": "I",
+          "style": "functionKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "I",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "k",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "k"
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 39,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "i",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "i",
+            "switchTo": "kb2_letters"
+          }
+        },
+        {
+          "label": "end",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 123
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 123,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "↑",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 19
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 19,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "home",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 122
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 122,
+            "intervalMs": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "splitIndex": 5,
+      "keys": [
+        {
+          "label": "Ctrl",
+          "icon": "ctrl",
+          "style": "modifierKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "TOGGLE_MODIFIER",
+            "modifier": "CTRL"
+          },
+          "onLongPress": {
+            "type": "LOCK_MODIFIER",
+            "modifier": "CTRL"
+          }
+        },
+        {
+          "label": "ABC",
+          "icon": "letters",
+          "style": "functionKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SWITCH_LAYOUT",
+            "target": "kb2_letters"
+          }
+        },
+        {
+          "label": "123",
+          "icon": "numbers",
+          "style": "modifierKey",
+          "weight": 1.0,
+          "onPress": {
+            "type": "SWITCH_LAYOUT",
+            "target": "kb2_numbers"
+          }
+        },
+        {
+          "label": "SPACE",
+          "icon": "space",
+          "style": "alphaKey",
+          "weight": 1.4,
+          "flexible": true,
+          "isSplitKey": true,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": " "
+          }
+        },
+        {
+          "label": "h",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "h"
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 36,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "j",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "j"
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 38,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "l",
+          "style": "alphaKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_TEXT",
+            "text": "l"
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 40,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "←",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 21
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 21,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "↓",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 20
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 20,
+            "intervalMs": 50
+          }
+        },
+        {
+          "label": "→",
+          "style": "navigationKey",
+          "weight": 1.1,
+          "onPress": {
+            "type": "SEND_CODE",
+            "code": 22
+          },
+          "onLongPress": {
+            "type": "AUTO_REPEAT",
+            "code": 22,
+            "intervalMs": 50
+          }
+        }
+      ]
+    }
+  ]
+}

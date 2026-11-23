@@ -1499,6 +1499,11 @@ class KeyboardView @JvmOverloads constructor(
                 com.infinikey_ime.util.FontFallbackManager.applyToPaint(topLeftPaint, topLeft)
                 val cornerColor = key.secondaryFgColor ?: key.fgColor ?: secondaryTextPaint.color
                 topLeftPaint.color = cornerColor
+                val availableCornerWidth = (rect.width() - (10f * density)).coerceAtLeast(1f)
+                val measuredCornerWidth = topLeftPaint.measureText(topLeft)
+                if (measuredCornerWidth > availableCornerWidth) {
+                    topLeftPaint.textSize *= availableCornerWidth / measuredCornerWidth
+                }
                 canvas.drawText(topLeft, rect.left + (5f * density), secY, topLeftPaint)
             }
 
@@ -1516,6 +1521,11 @@ class KeyboardView @JvmOverloads constructor(
                 com.infinikey_ime.util.FontFallbackManager.applyToPaint(secPaint, rawSecToDraw)
                 val cornerColor = key.secondaryFgColor ?: key.fgColor ?: secondaryTextPaint.color
                 secPaint.color = cornerColor
+                val availableCornerWidth = (rect.width() - (10f * density)).coerceAtLeast(1f)
+                val measuredCornerWidth = secPaint.measureText(rawSecToDraw)
+                if (measuredCornerWidth > availableCornerWidth) {
+                    secPaint.textSize *= availableCornerWidth / measuredCornerWidth
+                }
                 canvas.drawText(rawSecToDraw, rect.right - (5f * density), secY, secPaint)
             }
 
@@ -2175,7 +2185,7 @@ class KeyboardView @JvmOverloads constructor(
             if (isLetter) {
                 if (action is KeyAction.SendText) {
                     val txt = action.text
-                    KeyAction.SendText(if (txt.any { it.isLowerCase() }) txt.uppercase() else txt)
+                    KeyAction.SendText(if (txt.any { it.isLowerCase() }) txt.uppercase() else txt, action.switchTo)
                 } else {
                     KeyAction.SendText(sourceKey.primaryLabel.uppercase())
                 }
@@ -2183,10 +2193,13 @@ class KeyboardView @JvmOverloads constructor(
                 val isPrimaryPress = action == sourceKey.onPressAction || (action is KeyAction.SendText && action.text == sourceKey.primaryLabel)
                 val officialShifted = if (isPrimaryPress) getOfficialShiftedValue(sourceKey) else null
                 if (!officialShifted.isNullOrEmpty()) {
-                    KeyAction.SendText(if (officialShifted.any { it.isLowerCase() }) officialShifted.uppercase() else officialShifted)
+                    KeyAction.SendText(
+                        if (officialShifted.any { it.isLowerCase() }) officialShifted.uppercase() else officialShifted,
+                        (action as? KeyAction.SendText)?.switchTo
+                    )
                 } else if (action is KeyAction.SendText) {
                     val txt = action.text
-                    KeyAction.SendText(if (txt.any { it.isLowerCase() }) txt.uppercase() else txt)
+                    KeyAction.SendText(if (txt.any { it.isLowerCase() }) txt.uppercase() else txt, action.switchTo)
                 } else {
                     action
                 }

@@ -227,7 +227,7 @@ The root `styles` dictionary defines named category style classes. Keys referenc
 * **`label` / `secondaryLabel` on Spacers**: When specified on a spacer key (`"spacer": true` or `"style": "spacer"`), renders custom text centered inside the spacing gap. Supports multi-line strings (`\n`), custom text color (`fgColor`), and font sizing (`fontSize`).
 * **`showPreview`** / **`showKeyPreview`** (`boolean`, optional): Overrides popup preview magnification bubble for this specific key.
 * **`alternates`** (`array<string>`, optional): List of alternate characters/symbols displayed in long-press popup menus. *Legacy alias: `alternateKeys`.*
-* **`icon`** (`string`, optional): Vector SVG or icon identifier (e.g. `"mic"`, `"paperclip"`, `"clipboard"`, `"copy"`, `"cut"`, `"paste"`, `"select_all"`, `"keyboard"`).
+* **`icon`** (`string`, optional): Vector SVG or icon identifier (e.g. `"mic"`, `"paperclip"`, `"clipboard"`, `"copy"`, `"cut"`, `"paste"`, `"select_all"`, `"keyboard"`, `"space"`, `"backspace"`, `"enter"`, `"code"`, `"numbers"`, `"letters"`, `"symbols"`, `"ctrl"`, `"tab"`, `"shift"`).
 * **`backgroundImage`** (`string`, optional): Custom key texture image path.
 
 ### Event Handlers
@@ -244,7 +244,7 @@ Actions are declared as strongly-typed JSON objects with a `type` discriminator.
 ### A. Input Actions
 | Action `type` | Parameters | Description |
 | :--- | :--- | :--- |
-| `"SEND_TEXT"` | `"text"` (`string`) | Sends raw string text or single character directly to the input connection. |
+| `"SEND_TEXT"` | `"text"` (`string`), `"switchTo"` (`string`, optional) | Sends raw string text or a character directly to the input connection, then switches to the named layout when `switchTo` is set. This is used for vim insertion commands such as `i`, `o`, `A`, `I`, and `e` that should return to `kb2_letters`. |
 | `"SEND_CODE"` | `"code"` (`int`) | Sends Android `KeyEvent` keycode (e.g. `67` Backspace, `66` Enter, `131` F1). |
 | `"AUTO_REPEAT"` | `"code"` (`int`), `"intervalMs"` (`int`) | Auto-repeats keycode action continuously while key is held down. |
 
